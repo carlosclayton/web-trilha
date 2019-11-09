@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
+use Webtrila\Models\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -25,3 +25,17 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+
+$factory->state(User::class, 'admin', function (Faker $faker) {
+    return [
+        'role' => User::ROLE_ADMIN
+    ];
+});
+
+$factory->state(User::class, 'client', function (Faker $faker) {
+    return [
+        'role' => User::ROLE_CLIENT
+    ];
+});
+
